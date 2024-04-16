@@ -2,6 +2,7 @@ build/
 .gitignore
 package-lock.json
 .vscode/
+.idea/
 .github/
 tsconfig.json
 tsconfig.native.json
