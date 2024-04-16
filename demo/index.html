@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test</title>
+    <script src="../dist/bundled/Lohnsteuer2024Big.js"></script>
+</head>
+<body>
+
+    <script>
+        const tax = new Lohnsteuer2024();
+        tax.initInputs();
+
+        tax.setLZZ(2); // Lohnzahlungszeitraum (2=monatlich)
+        tax.setKVZ(new Big(1.6)); // Einkommensbezogener Zusatzbeitragssatz
+        tax.setSTKL(1); // Steuerklasse
+        tax.setPVZ(1); // Zuschlag soziale Pflegeversicherung
+        tax.setR(1); // Religionszugehörigkeit
+        tax.setRE4(new Big(500000)); // Steuerpflichtiger Arbeitslohn in Cent
+        tax.setZKF(new Big(0.5)); // Kinderfreibetrag
+
+        tax.calculate();
+
+        console.log(tax.getLSTLZZ().toNumber());  // Lohnsteuer
+        console.log(tax.getSOLZLZZ().toNumber()); // Solidaritätszuschlag
+        console.log(tax.getBK().toNumber());      // Kirchensteuer
+    </script>
+
+</body>
+</html>
